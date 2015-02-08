@@ -7,7 +7,7 @@ This is a collection of shell and perl scripts for quantifying MCMC
 
 For more information see:
 C. Whidden and F. A. Matsen IV. Quantifying MCMC Exploration of Phylogenetic
-Tree Space. Submitted. Preprint available at: TODO: arXiv link
+Tree Space. Submitted. Preprint available at: http://arxiv.org/abs/1405.2120
 
 Copyright 2014 Chris Whidden
 cwhidden@fhcrc.org
