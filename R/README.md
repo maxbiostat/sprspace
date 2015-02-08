@@ -15,3 +15,5 @@ The main focus will be on BEAST time-calibrated trees.
 - [ ] plot graphs;
 
 - [ ] compute commute-time statistics;
+
+- [ ] compute the topological Gelman-Rubin-like measure 
