@@ -7,7 +7,6 @@ read.nexusB <- function (file, type = "BEAST", tree.names = NULL)
     first.half <- lapply(strsplit(X, "posterior="), function(x) x[2])
     posteriors <- na.omit(as.numeric(unlist(lapply(first.half, function (x) strsplit(x, "\\]")[[1]][1])))) # horrible, I know, but life is short. YOLO!
   } 
-  print(mean(posteriors))
   LEFT <- grep("\\[", X)
   RIGHT <- grep("\\]", X)
   if (length(LEFT)) {
