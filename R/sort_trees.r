@@ -1,7 +1,7 @@
 # Takes a set of trees and calculates the weights. Then sorts them and  adds trees to 'sorted' until the sum of weights  <= alpha
 # TODO: find if we should also put a limit on the number of trees
 sort_trees <- function(trees, N = 4096, alpha = .95){ 
- posts <- unlist(lapply(trees, function(tree) tree$posterior))
+ posts <- abs( unlist(lapply(trees, function(tree) tree$posterior)) ) # inverse of the posterior to get the weights  right
  weights <- posts/sum(posts) # normalised weights 
  sweights <- sort(weights)
  pos <- sapply(sweights, function(x) match(x, weights)) 
