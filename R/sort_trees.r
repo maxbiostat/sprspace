@@ -1,9 +1,9 @@
-# Takes a set of trees and calculates the weights. Then sorts them and  adds trees to 'sorted' until the sum of weights  <= alpha
-# TODO: find if we should also put a limit on the number of trees
+# Takes a set of unique trees and calculates the weights. Then sorts them and  adds trees to 'sorted' until the sum of weights  <= alpha
 sort_trees <- function(trees, N = 4096, alpha = .95){ 
- posts <- abs (unlist(lapply(trees, function(tree) tree$posterior)) )
- weights <- posts/sum(posts) # normalised weights 
- sweights <- sort(weights)
+ hits <- as.vector(trees[[2]]) # "hit" information from unique_trees()
+ trees <- trees[[1]]
+ weights <- hits/sum(hits) # normalised weights 
+ sweights <- sort(weights, decreasing = TRUE)
  pos <- sapply(sweights, function(x) match(x, weights)) 
    #
  sorted <- list() # hate objects of varying size, but...
