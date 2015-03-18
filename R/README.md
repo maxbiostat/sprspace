@@ -18,7 +18,7 @@ The main focus will be on BEAST time-calibrated trees.
 
 - [ ] compute the topological Gelman-Rubin-like measure 
  
-
+==
 **DS1 data set (27 taxa)**
 
 ![](RESULTS/DS1_graph_first_24_MCCdist.png)
