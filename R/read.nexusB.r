@@ -3,9 +3,10 @@ read.nexusB <- function (file, type = "BEAST", tree.names = NULL)
 {
   X <- scan(file = file, what = "", sep = "\n", quiet = TRUE)
   if(type == "BEAST"){ # TODO: implement MrBayes option
-    Y <- strsplit(X, "Begin trees;")
-    first.half <- lapply(strsplit(X, "posterior="), function(x) x[2])
-    posteriors <- na.omit(as.numeric(unlist(lapply(first.half, function (x) strsplit(x, "\\]")[[1]][1])))) # horrible, I know, but life is short. YOLO!
+    first.half.p <- lapply(strsplit(X, "posterior="), function(x) x[2])
+    first.half.s <- lapply(strsplit(X, "tree STATE_"), function(x) x[2])
+    posteriors <- na.omit(as.numeric(unlist(lapply(first.half.p, function (x) strsplit(x, "\\]")[[1]][1])))) 
+    states <- na.omit(as.numeric(unlist(lapply(first.half.s, function (x) strsplit(x, "\\[&")[[1]][1])))) # horrible, I know, but life is short and YOLO!
   } 
   LEFT <- grep("\\[", X)
   RIGHT <- grep("\\]", X)
@@ -146,6 +147,7 @@ read.nexusB <- function (file, type = "BEAST", tree.names = NULL)
   }
   for (i in 1:Ntree) {
     trees[[i]]$posterior <- posteriors[i]
+    trees[[i]]$state <- states[i]
   }
   trees
 }
