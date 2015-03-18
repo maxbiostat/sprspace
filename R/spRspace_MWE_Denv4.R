@@ -58,7 +58,7 @@ ocs2mcc <- as.numeric(rspr.matrix(trees = plusmcc, type = "o"))[-1] # the first 
 plot(ocs2mcc, type = "l", ylab = "SPR distance", main = "Distance to MCC in the ordered posterior credible set")
 plot(ocs2mcc, type = "l", ylab = "SPR distance", main = "Distance to MCC in the ordered posterior credible set", xlim = c(1, 400)) # Zooming in
 write.table(data.frame(distance = matrix(ocs2mcc, ncol = 1)),
-            file = paste("RESULTS/Denv4_first", first, "_dists2mcc_ordered_credible_set.txt", sep = ""),
+            file = paste("RESULTS/Denv4_first_", first, "_dists2mcc_ordered_credible_set.txt", sep = ""),
             row.names = FALSE)
 
 #####################
@@ -99,12 +99,12 @@ axis(2, at = 1:N , labels = labs)
 image.plot(matrix.full, add = TRUE, legend.mar = 3.1)
 dev.off()
 # graph
-png(paste("../../RESULTS/Denv4_graph_first_", first, "_MCCdist.png", sep = ""))
+png(paste("RESULTS/Denv4_graph_first_", first, "_MCCdist.png", sep = ""))
 plot(radius.graph, vertex.size = pp.col.pos, vertex.color = heat.colors(k.dist)[rev(dist.col.pos)],
      vertex.label = NA, layout = layout.fruchterman.reingold)
 dev.off()
 # boxplot
-png("../../RESULTS/Denv4_boxplots_degree_versus_distancetoMCC.png")
+png("RESULTS/Denv4_boxplots_degree_versus_distancetoMCC.png")
 boxplot(degree(radius.graph)~ocs2mcc, col = rev(heat.colors(k.dist)), main = "Vertex (tree) degree versus distance to MCC tree",
         xlab = "SPR distance to MCC", ylab = "k")
 dev.off()
