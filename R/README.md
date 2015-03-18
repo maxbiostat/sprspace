@@ -8,7 +8,7 @@ The main focus will be on BEAST time-calibrated trees.
 
 - [x] sort trees and get 95% set;
 
-- [ ] create SPR matrix;
+- [x ] create SPR matrix;
 
 - [ ] export graphs;
 
