@@ -17,6 +17,8 @@ The main focus will be on BEAST time-calibrated trees.
 - [ ] compute commute-time statistics;
 
 - [ ] compute the topological Gelman-Rubin-like measure 
+ 
+
 **DS1 data set (27 taxa)**
 ![](RESULTS/DS1_graph_first_24_MCCdist.png)
 **Dengue 4 Env data set (17 taxa)**
