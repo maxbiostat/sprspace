@@ -17,3 +17,5 @@ The main focus will be on BEAST time-calibrated trees.
 - [ ] compute commute-time statistics;
 
 - [ ] compute the topological Gelman-Rubin-like measure 
+
+![](RESULTS/DS1_graph_first_24_MCCdist.png)
