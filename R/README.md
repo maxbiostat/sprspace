@@ -10,10 +10,12 @@ The main focus will be on BEAST time-calibrated trees.
 
 - [x] create SPR matrix;
 
-- [ ] export graphs;
+- [x] plot graphs;
 
-- [ ] plot graphs;
+- [x] export graphs;
 
 - [ ] compute commute-time statistics;
 
 - [ ] compute the topological Gelman-Rubin-like measure 
+
+![](RESULTS/DS1_graph_first_24_MCCdist.png)
