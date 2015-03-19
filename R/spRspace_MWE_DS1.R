@@ -85,7 +85,8 @@ modularity(x = radius.graph, membership = pp.col.pos)
 assortativity.degree(graph  = radius.graph, directed = FALSE)
 assortativity.nominal(radius.graph, types = as.integer(pp.col.pos), directed = FALSE)
 assortativity.nominal(radius.graph, types = as.integer(dist.col.pos), directed = FALSE)
-
+transitivity(radius.graph, type = "global") ## clustering coefficients
+transitivity(radius.graph, type = "average")
 ############
 #### Plotting
 ############
@@ -103,13 +104,14 @@ axis(1, at = 1:N , labels = labs)
 axis(2, at = 1:N , labels = labs)
 image.plot(matrix.full, add = TRUE, legend.mar = 3.1)
 dev.off()
-# Now the graph. Vertex sizes are pp (normalised uhits) and colours are distance to MCC
-png(paste("RESULTS/DS1_graph_first_", first, "_MCCdist.png", sep = ""))
-plot(radius.graph, vertex.size = pp.col.pos, vertex.color = heat.colors(k.dist)[rev(dist.col.pos)],
-     vertex.label = NA, layout = layout.fruchterman.reingold)
-dev.off()
 # Boxplot of degree versus distance to MCC
 png("RESULTS/DS1_boxplots_degree_versus_distancetoMCC.png")
 boxplot(degree(radius.graph)~ocs2mcc, col = rev(heat.colors(k.dist)), main = "Vertex (tree) degree versus distance to MCC tree",
         xlab = "SPR distance to MCC", ylab = "k")
+dev.off()
+# Now the graph. Vertex sizes are pp (normalised uhits) and colours are distance to MCC
+png(paste("RESULTS/DS1_graph_first_", first, "_MCCdist.png", sep = ""))
+par(mar = c(0,0,0,0)+.1)
+plot(radius.graph, vertex.size = pp.col.pos, vertex.color = heat.colors(k.dist)[rev(dist.col.pos)],
+     vertex.label = NA, layout = layout.fruchterman.reingold)
 dev.off()

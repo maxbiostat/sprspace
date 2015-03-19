@@ -1,4 +1,4 @@
-Creator "igraph version @VERSION@ Thu Mar 19 10:22:14 2015"
+Creator "igraph version @VERSION@ Thu Mar 19 10:59:01 2015"
 Version 1
 graph
 [
@@ -226,7 +226,7 @@ graph
   ]
   edge
   [
-    source 16
+    source 15
     target 3
   ]
   edge
