@@ -46,7 +46,7 @@ system.time(
 system.time(
   matrix.radius.one <- rspr.matrix(first.rutrees, type = "restricted", maxdist = 1)
 )
-write.csv(matrix.full, file = paste("RESULTS/spr_distances_credibleset_first_", first, ".csv", sep = ""), row.names = FALSE, col.names = FALSE)
+write.csv(matrix.full, file = paste("RESULTS/DS1_spr_distances_credibleset_first_", first, ".csv", sep = ""), row.names = FALSE, col.names = FALSE)
 
 # Now let's compute the distance of each tree in the ordered (ranked) posterior credible set to the mcc tree
 plusmcc <- vector(first + 1, mode = "list")
