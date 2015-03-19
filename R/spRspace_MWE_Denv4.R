@@ -6,7 +6,6 @@ library(devtools)
 source("read.nexusB.r")
 source("unique_trees.r")
 source("sort_trees.r")
-source("compute_topological_matrix.R")
 source_url("https://raw.githubusercontent.com/maxbiostat/rspr/master/R/rspR.r")
 source("spRspace_aux.R")
 ##
