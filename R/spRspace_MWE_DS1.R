@@ -2,6 +2,7 @@
 ###  also see accompanying paper http://sysbio.oxfordjournals.org/content/early/2015/01/27/sysbio.syv006.abstract)
 ###  We will analyse a small posterior sample of 10,000 trees of the DS1 data set in Whidden & Matsen (2015) comprising 27 taxa.
 library(ape)
+library(devtools)
 source("read.nexusB.r")
 source("unique_trees.r")
 source("sort_trees.r")
@@ -34,6 +35,9 @@ length(utrees[[1]]) # How many [U]nique trees?
 uhits <- utrees[[2]] # How many times each?  
 most.sampled <- which(uhits == max(uhits)) # most frequent topology. A rare commodity, though.
 rspr(utrees$trees[[most.sampled]], mcc.tree)
+png("RESULTS/DS1_number_of_occurrences.png")
+barplot(table(uhits), xlab = "Number of times appeared in the posterior", ylab = "frequency")
+dev.off()
 summary(tomcc)
 rutrees <- sort_trees(utrees) # sorting trees according to their frequency
 ## Now let's follow Whidden & Matsen (2015) and use the 'first' first trees in the list of [R]anked [U]nique trees

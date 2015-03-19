@@ -33,6 +33,9 @@ length(utrees[[1]]) # How many [U]nique trees?
 uhits <- utrees[[2]] # How many times each?  
 most.sampled <- which(uhits == max(uhits)) # most frequent topology. A rare commodity, though.
 rspr(utrees$trees[[most.sampled]], mcc.tree)
+png("RESULTS/Denv4_number_of_occurrences.png")
+barplot(table(uhits), xlab = "Number of times appeared in the posterior", ylab = "frequency")
+dev.off()
 summary(tomcc)
 rutrees <- sort_trees(utrees) # sorting trees according to their frequency
 ## Now let's follow Whidden & Matsen (2015) and use the first 'first' trees in the list of [R]anked [U]nique trees
