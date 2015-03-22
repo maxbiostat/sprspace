@@ -1,5 +1,4 @@
 ## Takes a set of unique trees and calculates the weights. Then sorts them and  adds trees to 'sorted' until the sum of weights  <= alpha
-## please note that it depends on nw_order, and assumes it lives in /usr/bin/nw_order
 sort_trees <- function(utrees, N = 4096, alpha = .95){ 
   utrees.trees <- utrees[[1]]
   hits <- as.vector(utrees[[2]]) # "hit" information from unique_trees()
