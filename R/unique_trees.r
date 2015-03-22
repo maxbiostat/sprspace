@@ -2,6 +2,7 @@ library(ape)
 library(phybase)
 #################
 nw.order <- function(tree){
+## please note that it depends on nw_order, and assumes it lives in /usr/bin/nw_order
   system(input = write.tree(tree), command = "nw_order -", intern = TRUE)
 }
 # nw.order(rmtree(n = 50, N = 100))
