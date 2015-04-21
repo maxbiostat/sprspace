@@ -2,45 +2,40 @@ library(ape)
 library(phybase)
 #################
 nw.order <- function(tree){
-## please note that it depends on nw_order, and assumes it lives in /usr/bin/nw_order
-  system(input = write.tree(tree), command = "nw_order -", intern = TRUE)
+  require(ape)
+  ## please note that it depends on nw_order, and assumes it lives in /usr/bin/nw_order
+  tmp <- tempfile("ordered_trees", fileext = ".nwk")
+  system(input = write.tree(tree), command = paste("nw_order - >", tmp) )
+  res <- read.tree(tmp)
+  return(res)
 }
 # nw.order(rmtree(n = 50, N = 100))
-obtain.urep <- function(trees){
-  raw.trees <- nw.order(trees)
-  n <- length(raw.trees)
-  utrees <- vector(n, mode = "list")
-  for (i in 1:n) {utrees[[i]] <- read.tree(text = raw.trees[i])}
-  class(utrees) <- "multiPhylo"
-  return(utrees)
-}
 
 tree2string <- function(tree) {nw <- write.tree(tree); return( gsub(":[0-9]+", "", gsub("\\.", "", nw)))} 
+
 unique_trees <- function(trees){
-  trees <- obtain.urep(trees)
-  tt <- table(as.character(lapply(trees, tree2string)))
-  n <- length(tt)
-  new.trees <- vector(n, mode = "list")
-  for(i in 1:n){
-    new.trees[[i]] <- read.tree(text = names(tt)[i])
-  }
+  urep.trees <- nw.order(trees)
+  tt <- table(as.character(lapply(urep.trees, tree2string)))
+  new.trees <- lapply(names(tt), function(t) read.tree(text = t))
   class(new.trees) <- "multiPhylo"
   res <- list(trees = new.trees,  hits  = as.numeric(tt))
-  res
+  return(res)
 }
 #################
 ## Testing
-# utrees <- rmtree(n = 17, N = 1500, rooted = TRUE)
-# M <- 10000
+# N <- 15
+# t <- 500 
+# M <- 100
+# utrees <- rmtree(n = t, N = N, rooted = TRUE)
 # fake.posterior <- vector(M, mode = "list")
 # class(fake.posterior) <- class(utrees)
 # for(i in 1:M){
-#   fake.posterior[[i]] <- utrees[[sample(1:1500, 1)]]  
+#   fake.posterior[[i]] <- utrees[[sample(1:N, 1)]]  
 # }
 # write.tree(fake.posterior, file = "~/test_posterior_1494.nwk")
 # system.time(
 #   Utrees <- unique_trees(fake.posterior)
-#   )
+# )
 # 
 # ## real test
 # source("../../GREPO/R/read.nexusB.r")
