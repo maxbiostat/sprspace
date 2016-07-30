@@ -11,7 +11,7 @@ nw.order <- function(tree){
 }
 # nw.order(rmtree(n = 50, N = 100))
 
-tree2string <- function(tree) {nw <- write.tree(tree); return( gsub(":[0-9]+", "", gsub("\\.", "", nw)))} 
+tree2string <- function(tree) {tree$edge.length <- NULL; nw <- write.tree(tree); return( gsub(":[0-9]+", "", gsub("\\.", "", nw)))} 
 
 unique_trees <- function(trees){
   urep.trees <- nw.order(trees)
