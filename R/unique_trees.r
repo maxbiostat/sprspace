@@ -2,7 +2,7 @@ library(ape)
 #################
 nw.order <- function(tree){
   require(ape)
-  ## please note that it depends on nw_order, and assumes it lives in /usr/bin/nw_order
+  ## please note that it depends on nw_order and assumes it lives at /usr/bin/nw_order
   tmp <- tempfile("ordered_trees", fileext = ".nwk")
   system(input = write.tree(tree), command = paste("nw_order - >", tmp) )
   res <- read.tree(tmp)
